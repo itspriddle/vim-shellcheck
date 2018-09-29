@@ -1,0 +1,111 @@
+*shellcheck.txt*  Vim wrapper for ShellCheck
+Author: Joshua Priddle <jpriddle@me.com>
+License: MIT (see |shellcheck-license|)
+Version: 0.0.1
+
+This plugin is only available if 'compatible' is not set.
+
+==============================================================================
+INTRODUCTION                                    *shellcheck*
+
+Vim wrapper for ShellCheck (https://github.com/koalaman/shellcheck), a static
+analysis tool for shell scripts.
+
+==============================================================================
+COMMANDS                                        *shellcheck-commands*
+
+These commands are available in buffers with 'filetype' of `sh`.
+
+:[range]ShellCheck[!] [args]                    *shellcheck-:ShellCheck*
+
+Run `shellcheck` for the current buffer using optional [args] and send any
+errors to the |quickfix-window|. Specify a [range] or use a visual selection
+to check only those lines, otherwise the entire buffer is checked. Call with a
+bang to automatically open the quickfix-window when errors are found.
+
+:[range]LShellCheck[!] [args]                   *shellcheck-:LShellCheck*
+
+Run `shellcheck` for the current buffer using optional [args] and send any
+errors to a |location-list-window|. Specify a [range] or use a visual
+selection to check only those lines, otherwise the entire buffer is checked.
+Call with a bang to automatically open the location list window when errors
+are found.
+
+==============================================================================
+QF MAPPINGS                                     *shellcheck-qf-mappings*
+
+Open ShellCheck error definition on GitHub - gb ~
+
+The `gb` command can be used quickfix or location list windows to open the
+ShellCheck error definition on GitHub. This functionality is enabled when the
+window's `w:quickfix_title` attribute starts with one of the following:
+
+- `:shellcheck`   created by `compiler shellcheck | :make` or some other program
+- `:ShellCheck`   created by the `:ShellCheck` command
+- `:LShellCheck`  created by the `:LShellCheck` command
+
+To disable this mapping:
+>
+    let g:shellcheck_disable_mappings = 1
+<
+To setup a different map:
+>
+    let g:shellcheck_disable_mappings = 1
+    autocmd FileType qf nmap <buffer> <silent> gB <Plug>(shellcheck-gb)
+<
+Note: The `gb` map will not be defined if one already exists.
+
+==============================================================================
+COMPILER                                        *shellcheck-compiler*
+
+A ShellCheck |:compiler| is provided for use as a 'makeprg':
+>
+    :compiler shellcheck
+    :make!
+<
+==============================================================================
+CONFIGURATION                                   *shellcheck-configuration*
+
+*g:shellcheck_qf_open*
+
+Specifies how the |quickfix-window| is opened when `:ShellCheck!` is used. The
+default value is "botright copen 10".
+
+*g:shellcheck_ll_open*
+
+Specifies how the |location-list-window| is opened when `:LShellCheck!` is
+used. The default value is "lopen 10".
+
+==============================================================================
+ABOUT                                           *shellcheck-about*
+
+Grab the latest version or report a bug on Github:
+
+https://github.com/itspriddle/vim-shellcheck
+
+==============================================================================
+LICENSE                                         *shellcheck-license*
+
+MIT License
+
+Copyright (c) 2018 Joshua Priddle <jpriddle@me.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+ vim:tw=78:et:ft=help:norl:
