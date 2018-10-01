@@ -83,7 +83,7 @@ Use your favorite plugin manager, or use Vim's built-in package support:
 ```
 mkdir -p ~/.vim/pack/shellcheck/start
 cd ~/.vim/pack/shellcheck/start
-git clone https://github.com/tpope/vim-eunuch.git
+git clone https://github.com/itspriddle/vim-shellcheck.git
 vim -u NONE -c "helptags vim-shellcheck/doc" -c q
 ```
 
