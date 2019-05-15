@@ -4,11 +4,8 @@ else
   let b:did_ftplugin_shellcheck = 1
 endif
 
-if exists("b:undo_ftplugin")
-  let b:undo_ftplugin .= "|unlet b:did_ftplugin_shellcheck"
-else
-  let b:undo_ftplugin = "unlet b:did_ftplugin_shellcheck"
-endif
+let b:undo_ftplugin = get(b:, "undo_ftplugin", "exe") .
+  \ "|unlet b:did_ftplugin_shellcheck"
 
 function! s:gb() abort
   if w:quickfix_title !~# '^:\(shellcheck\|L\?ShellCheck\)'
