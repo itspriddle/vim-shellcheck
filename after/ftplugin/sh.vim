@@ -43,7 +43,7 @@ function! s:shellcheck(args, open, qf, line1, line2) abort
     let temp_file = printf("%s-%s", tempname(), fnamemodify(current_file, ":t"))
     let lines = map(getline(1, "$"), "s:format_line(v:key, v:val, a:line1, a:line2)")
     let title = join(filter([program, a:args, current_file], "len(v:val)"))
-    let cmd = join(filter(["shellcheck -f gcc", a:args, temp_file], "len(v:val)"))
+    let cmd = join(filter(["shellcheck -f gcc", a:args, shellescape(temp_file)], "len(v:val)"))
     let &errorformat = s:shellcheck_efm
 
     call writefile(lines, temp_file)
