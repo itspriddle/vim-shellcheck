@@ -10,7 +10,7 @@ endif
 let s:save_cpo = &cpo
 set cpo-=C
 
-CompilerSet makeprg=shellcheck\ -f\ gcc\ $*\ %
+CompilerSet makeprg=shellcheck\ -f\ gcc\ $*\ %:S
 
 CompilerSet errorformat=
   \%f:%l:%c:\ %trror:\ %m,
