@@ -8,9 +8,10 @@ let b:undo_ftplugin = get(b:, "undo_ftplugin", "exe") .
   \ "|unlet b:did_ftplugin_shellcheck"
 
 let s:shellcheck_efm =
-  \ '%f:%l:%c: %trror: %m,' .
-  \ '%f:%l:%c: %tarning: %m,' .
-  \ '%I%f:%l:%c: note: %m'
+  \ '%f:%l:%c: %trror: %m [SC%n],' .
+  \ '%f:%l:%c: %tarning: %m [SC%n],' .
+  \ '%I%f:%l:%c: %tote: %m [SC%n],' .
+  \ '%-G%.%#'
 
 function! s:warn(message) abort
   echohl WarningMsg
