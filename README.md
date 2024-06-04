@@ -35,7 +35,7 @@ The `gb` command can be used quickfix or location list windows to open the
 ShellCheck error definition on GitHub. This functionality is enabled when the
 window's `w:quickfix_title` attribute starts with one of the following:
 
-- `:shellcheck` -- created by `compiler shellcheck | :make` or some other
+- `:shellcheck` -- created by `compiler shellcheck | :make %` or some other
   program
 - `:ShellCheck` -- created by the `:ShellCheck` command
 - `:LShellCheck` -- created by the `:LShellCheck` command
@@ -57,11 +57,13 @@ Note: The `gb` map will not be defined if one already exists.
 
 ## Compiler
 
-A ShellCheck `:compiler` is provided for use as a `'makeprg'`:
+A ShellCheck `:compiler` is provided by Vim 8.2.1769 and newer for use as a
+`'makeprg'`. To use it, run:
 
 ```
 :compiler shellcheck
-:make!
+:make! %
+:copen
 ```
 
 ## Configuration
