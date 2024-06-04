@@ -32,8 +32,11 @@ are found.
 **Open ShellCheck error definition on GitHub - gb**
 
 The `gb` command can be used quickfix or location list windows to open the
-ShellCheck error definition on GitHub. This functionality is enabled when the
-window's `w:quickfix_title` attribute starts with one of the following:
+ShellCheck error definition on GitHub. This command requires the Netrw plugin
+to be installed. If Netrw is not installed, the `gb` map prints the URL to the
+ShellCheck error definition on GitHub instead. This functionality is enabled
+when the window's `w:quickfix_title` attribute starts with one of the
+following:
 
 - `:shellcheck` -- created by `compiler shellcheck | :make %` or some other
   program

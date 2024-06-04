@@ -21,7 +21,9 @@ function! s:gb() abort
       runtime! autoload/netrw.vim
     endif
 
-    call netrw#BrowseX(url, netrw#CheckIfRemote())
+    if exists('*netrw#BrowseX') && exists('*netrw#CheckIfRemote')
+      call netrw#BrowseX(url, netrw#CheckIfRemote())
+    endif
 
     echo url
   endif
