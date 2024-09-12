@@ -12,10 +12,10 @@ function! s:gb() abort
     return
   end
 
-  let id = matchstr(getline("."), ' \[\zsSC\d\+\ze\]$')
+  let id = matchstr(getline(line('.')), ' \(error\|warning\|note\) \zs\d\+\ze')
 
-  if id =~# '^SC\d\+$'
-    let url = "https://github.com/koalaman/shellcheck/wiki/" . id
+  if id =~# '^\d\+$'
+    let url = "https://github.com/koalaman/shellcheck/wiki/SC" . id
 
     if !exists('g:loaded_netrw')
       runtime! autoload/netrw.vim
