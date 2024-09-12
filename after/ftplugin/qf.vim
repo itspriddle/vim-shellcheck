@@ -12,7 +12,7 @@ function! s:gb() abort
     return
   end
 
-  let id = matchstr(getline('.'), ' \(error\|warning\|note\) \zs\d\+\ze')
+  let id = matchstr(getline("."), ' \(error\|warning\|note\) \zs\d\+\ze')
 
   if id =~# '^\d\+$'
     let url = "https://github.com/koalaman/shellcheck/wiki/SC" . id
