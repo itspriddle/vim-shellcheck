@@ -1,7 +1,7 @@
 *shellcheck.txt*  Vim wrapper for ShellCheck
 Author: Joshua Priddle <jpriddle@me.com>
 License: MIT (see |shellcheck-license|)
-Version: 1.1.0
+Version: 1.1.1
 
 This plugin is only available if 'compatible' is not set.
 
