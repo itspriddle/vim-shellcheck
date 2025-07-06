@@ -19,9 +19,12 @@ function! s:gb() abort
 
     if !exists('g:loaded_netrw')
       runtime! autoload/netrw.vim
+      runtime! autoload/netrw/os.vim
     endif
 
-    if exists('*netrw#BrowseX') && exists('*netrw#CheckIfRemote')
+    if has('patch-9.1.1485') && exists('*netrw#os#Open')
+      call netrw#os#Open(url)
+    elseif exists('*netrw#BrowseX') && exists('*netrw#CheckIfRemote')
       call netrw#BrowseX(url, netrw#CheckIfRemote())
     endif
 
